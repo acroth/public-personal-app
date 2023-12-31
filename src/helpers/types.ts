@@ -1,1 +1,1 @@
-export type NavLinks = Array<{ navItem: string, path: string }>;
+export type NavLinks = Array<{ navItem: string; path: string }>;
