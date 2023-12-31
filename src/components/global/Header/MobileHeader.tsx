@@ -1,15 +1,28 @@
-import React, { useState } from 'react';
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/navbar";
+import React, { FunctionComponent, useState } from 'react';
+import { Link, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
+import type { NavLinks } from '../../../helpers/types'
 
 interface MobileHeaderProps {
-    title: string;
+    links: NavLinks;
 }
 
-const MobileHeader: React.FC<MobileHeaderProps> = ({ title }) => {
+const MobileHeader: FunctionComponent<MobileHeaderProps> = ({ links }) => {
+
 
     return (
         <NavbarMenu>
-            <h1>{title}</h1>
+            {links.map((item, index) => (
+                <NavbarMenuItem key={`${item}-${index}`}>
+                    <Link
+                        color="foreground"
+                        href={item.path}
+                        className="w-full"
+                        size='lg'
+                    >
+                        {item.navItem}
+                    </Link>
+                </NavbarMenuItem>
+            ))}
         </NavbarMenu>
     );
 };
